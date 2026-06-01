@@ -433,7 +433,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .dl-main-logo {
-  height: 40px;
+  height: 56px;
   width: auto;
   filter: invert(1) brightness(2);
 }
@@ -459,10 +459,10 @@ a { color: inherit; text-decoration: none; }
 .dl-series::-webkit-scrollbar { display: none; }
 
 .series-logo {
-  height: 28px;
+  height: 80px;
   width: auto;
   flex-shrink: 0;
-  opacity: 0.75;
+  opacity: 0.85;
   transition: opacity 0.2s;
 }
 
@@ -549,6 +549,83 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.7;
   color: rgba(255,255,255,0.2);
   max-width: 760px;
+}
+/* ── Hero new elements ── */
+.hero-toplabel {
+  position: absolute;
+  top: 72px;
+  right: 40px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.hero-series-logo {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  filter: invert(1) brightness(2);
+  max-width: 400px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-ig-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.hero-dot-sep {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+}
+
+.hero-platform-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+.hero-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.75);
+  max-width: 400px;
+}
+
+/* Override CTA to white fill black text */
+.hero-cta {
+  color: var(--black) !important;
+  background: var(--white) !important;
+  border: none !important;
+  font-weight: 700 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Banner background scrim so text stays readable */
+.cinematic-banner {
+  position: relative;
+}
+
+.cinematic-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.62);
+  z-index: 1;
+}
+
+.cinematic-banner .banner-inner {
+  position: relative;
+  z-index: 2;
 }
 
 /* ══════════════════════════════════════
