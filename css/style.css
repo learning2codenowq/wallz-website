@@ -37,7 +37,8 @@ a { color: inherit; text-decoration: none; }
   padding: 0 40px;
   display: flex;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+  background: var(--black);
+  border-bottom: 1px solid rgba(255,255,255,0.06);;
 }
 
 .nav-logo { display: flex; align-items: center; height: 60px; }
@@ -101,16 +102,16 @@ a { color: inherit; text-decoration: none; }
   z-index: 2;
 }
 
-/* Bottom-left info block — raised so all content is visible without scrolling */
+/* Bottom-left info block */
 .hero-info {
   position: absolute;
-  bottom: 200px;
+  bottom: 190px;
   left: 40px;
   right: 40px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 480px;
+  flex-direction: column-reverse;
+  gap: 14px;
+  max-width: 560px;
   z-index: 2;
 }
 
@@ -121,30 +122,49 @@ a { color: inherit; text-decoration: none; }
 
 .hero-series-logo {
   height: auto;
-  width: 220px;
+  width: 200px;
   object-fit: contain;
   object-position: left center;
   filter: invert(1) brightness(2);
-  max-height: 100px;
-  margin-bottom: 4px;
+  max-height: 90px;
+  margin-bottom: 2px;
+}
+
+/* Wallz Tablets — wide logo, control by width */
+.hero-slide[data-index="0"] .hero-series-logo {
+  width: 200px;
+  max-height: none;
+}
+
+/* Places Worldwide — tall/stacked logo, control by height */
+.hero-slide[data-index="1"] .hero-series-logo {
+  width: auto;
+  height: 120px;
+  max-height: 120px;
+}
+
+/* Slide 3 — adjust as needed once real logo is confirmed */
+.hero-slide[data-index="0"] .hero-series-logo {
+  width: 200px;
+  max-height: none;
 }
 
 /* Instagram row */
 .hero-meta {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .hero-ig-icon {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   color: var(--white);
 }
 
 .hero-handle {
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--white);
   transition: opacity 0.2s;
@@ -153,38 +173,38 @@ a { color: inherit; text-decoration: none; }
 .hero-handle:hover { opacity: 0.75; }
 
 .hero-dot-sep {
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(255,255,255,0.5);
 }
 
 .hero-platform-label {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--white);
 }
 
 /* Description */
 .hero-desc {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.2;
   color: rgba(255,255,255,0.8);
-  max-width: 400px;
+  max-width: 560px;
 }
 
 /* CTA — white fill, black text */
 .hero-cta-wrap {
   position: absolute;
-  bottom: 120px;
+  bottom: 96px;
   left: 40px;
   z-index: 10;
 }
 
 .hero-cta {
   display: inline-block;
-  padding: 13px 32px;
+  padding: 20px 52px;
   border-radius: 100px;
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--black);
   background: var(--white);
@@ -519,10 +539,15 @@ a { color: inherit; text-decoration: none; }
   .hero-info {
     left: 20px;
     right: 20px;
-    bottom: 160px;
+    bottom: 150px;
     text-align: center;
     align-items: center;
     max-width: 100%;
+  }
+
+  .hero-series-logo {
+    width: 220px;
+    max-height: 100px;
   }
 
   .hero-info > a { margin: 0 auto; }
