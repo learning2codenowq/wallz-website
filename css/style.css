@@ -402,100 +402,150 @@ a { color: inherit; text-decoration: none; }
 ══════════════════════════════════════ */
 #design-language {
   background: var(--black);
-  padding: 100px 40px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 60px 100px 80px;
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
 
 .dl-header {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 60px;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0;
 }
 
 .dl-main-logo {
-  height: 100px;
+  height: 52px;
   width: auto;
   filter: invert(1) brightness(2);
+  margin-bottom: 20px;
+}
+
+/* Sub-header row: "Design Language By Wallz" left, "Wallz Creative Design" right */
+.dl-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 0;
 }
 
 .dl-subtitle {
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
   color: var(--grey-mid);
 }
 
+/* Series logos row — generous vertical padding, no border of its own */
 .dl-series {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 24px;
   overflow-x: auto;
-  padding-bottom: 8px;
-  margin-bottom: 60px;
+  padding: 52px 0;
+  margin-bottom: 0;
   scrollbar-width: none;
 }
 
 .dl-series::-webkit-scrollbar { display: none; }
 
+/* All logos share the same height baseline */
 .series-logo {
-  height: 80px;
+  height: 28px;
   width: auto;
   flex-shrink: 0;
   opacity: 0.85;
   transition: opacity 0.2s;
 }
 
-.series-logo:hover { opacity: 1; }
-
-.dl-divider {
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-  margin-bottom: 60px;
+/* Places Worldwide is a tall stacked logo — let it be taller */
+.series-logo[alt="PLACES WORLDWIDE"] {
+  height: 52px;
+  width: auto;
 }
 
+.series-logo:hover { opacity: 1; }
+
+.dl-divider { display: none; }
+
+/* Icons section */
 .dl-icons-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0;
+}
+
+/* Label row — rule below only */
+.dl-icons-labels-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-top: none;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 40px;
 }
 
 .dl-icons-label {
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
   color: var(--grey-mid);
-  margin-bottom: 32px;
+  margin-bottom: 0;
 }
 
-.dl-icons { display: flex; flex-wrap: wrap; gap: 28px; }
+/* Two icon groups: left block + right block */
+.dl-icons-groups-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.dl-icons-group:first-child { flex: 0 0 auto; }
+.dl-icons-group:last-child  { flex: 0 0 auto; }
+
+/* Home area icons — 3 columns, wraps to 3+4 */
+.dl-icons-group:first-child .dl-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 56px);
+  gap: 3px;
+}
+
+/* Intelligence icons — single row */
+.dl-icons-group:last-child .dl-icons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 3px;
+}
 
 .icon-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  width: 100px;
+  justify-content: center;
 }
 
-.icon-item img {
-  width: 80px;
-  height: 80px;
+/* Home icons size */
+.dl-icons-group:first-child .icon-item img {
+  width: 56px;
+  height: 56px;
   object-fit: contain;
 }
 
-.icon-item span {
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  text-align: center;
-  line-height: 1.3;
+/* Intelligence icons — much larger */
+.dl-icons-group:last-child .icon-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
+
+.icon-item span { display: none; }
 
 /* ══════════════════════════════════════
    FOOTER
@@ -575,11 +625,17 @@ a { color: inherit; text-decoration: none; }
 
   .cinematic-banner { padding: 80px 20px; }
 
-  #design-language { padding: 80px 20px; }
+  #design-language { padding: 60px 20px; }
 
   .dl-header { flex-direction: column; align-items: flex-start; }
 
-  .dl-icons-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .dl-header-meta { flex-direction: column; gap: 6px; }
+  .dl-icons-labels-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .dl-icons-groups-row { flex-direction: column; gap: 40px; }
+  .dl-icons-group:first-child .dl-icons { grid-template-columns: repeat(3, 52px); }
+  .dl-icons-group:last-child .dl-icons { flex-wrap: wrap; }
+  .dl-icons-group:first-child .icon-item img { width: 52px; height: 52px; }
+  .dl-icons-group:last-child .icon-item img { width: 72px; height: 72px; }
 
   .dl-series { gap: 24px; }
 
