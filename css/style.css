@@ -106,8 +106,8 @@ a { color: inherit; text-decoration: none; }
 .hero-info {
   position: absolute;
   bottom: 190px;
-  left: 40px;
-  right: 40px;
+  left: 80px;
+  right: 80px;
   display: flex;
   flex-direction: column-reverse;
   gap: 14px;
@@ -127,7 +127,7 @@ a { color: inherit; text-decoration: none; }
   object-position: left center;
   filter: invert(1) brightness(2);
   max-height: 90px;
-  margin-bottom: 2px;
+  margin-bottom: 8px;
 }
 
 /* Wallz Tablets — wide logo, control by width */
@@ -139,8 +139,8 @@ a { color: inherit; text-decoration: none; }
 /* Places Worldwide — tall/stacked logo, control by height */
 .hero-slide[data-index="1"] .hero-series-logo {
   width: auto;
-  height: 120px;
-  max-height: 120px;
+  height: 160px;
+  max-height: 160px;
 }
 
 /* Slide 3 — adjust as needed once real logo is confirmed */
@@ -195,7 +195,7 @@ a { color: inherit; text-decoration: none; }
 .hero-cta-wrap {
   position: absolute;
   bottom: 96px;
-  left: 40px;
+  left: 80px;
   z-index: 10;
 }
 
