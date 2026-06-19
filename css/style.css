@@ -402,8 +402,13 @@ a { color: inherit; text-decoration: none; }
 ══════════════════════════════════════ */
 #design-language {
   background: var(--black);
-  padding: 60px 100px 80px;
+  padding: 60px 40px 80px;
   border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.dl-inner {
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .dl-header {
@@ -415,7 +420,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .dl-main-logo {
-  height: 52px;
+  height: 68px;
   width: auto;
   filter: invert(1) brightness(2);
   margin-bottom: 20px;
@@ -429,6 +434,7 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(255,255,255,0.15);
   margin-bottom: 0;
+  width: 100%;
 }
 
 .dl-subtitle {
@@ -455,16 +461,16 @@ a { color: inherit; text-decoration: none; }
 
 /* All logos share the same height baseline */
 .series-logo {
-  height: 28px;
+  height: 22px;
   width: auto;
   flex-shrink: 0;
   opacity: 0.85;
   transition: opacity 0.2s;
 }
 
-/* Places Worldwide is a tall stacked logo — let it be taller */
+/* Places Worldwide is the centrepiece — taller than all others */
 .series-logo[alt="PLACES WORLDWIDE"] {
-  height: 52px;
+  height: 68px;
   width: auto;
 }
 
@@ -511,18 +517,19 @@ a { color: inherit; text-decoration: none; }
 .dl-icons-group:first-child { flex: 0 0 auto; }
 .dl-icons-group:last-child  { flex: 0 0 auto; }
 
-/* Home area icons — 3 columns, wraps to 3+4 */
+/* Home area icons — 4 columns, 2 rows, tight grid */
 .dl-icons-group:first-child .dl-icons {
   display: grid;
-  grid-template-columns: repeat(3, 56px);
-  gap: 3px;
+  grid-template-columns: repeat(4, 72px);
+  gap: 1px;
 }
 
-/* Intelligence icons — single row */
+/* Intelligence icons — single tight row, no gaps */
 .dl-icons-group:last-child .dl-icons {
   display: flex;
   flex-wrap: nowrap;
-  gap: 3px;
+  gap: 1px;
+  align-items: center;
 }
 
 .icon-item {
@@ -533,15 +540,15 @@ a { color: inherit; text-decoration: none; }
 
 /* Home icons size */
 .dl-icons-group:first-child .icon-item img {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
 }
 
-/* Intelligence icons — much larger */
+/* Intelligence icons — tall, matching overall home block height */
 .dl-icons-group:last-child .icon-item img {
   width: 100px;
-  height: 100px;
+  height: 145px;
   object-fit: contain;
 }
 
@@ -632,10 +639,10 @@ a { color: inherit; text-decoration: none; }
   .dl-header-meta { flex-direction: column; gap: 6px; }
   .dl-icons-labels-row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .dl-icons-groups-row { flex-direction: column; gap: 40px; }
-  .dl-icons-group:first-child .dl-icons { grid-template-columns: repeat(3, 52px); }
+  .dl-icons-group:first-child .dl-icons { grid-template-columns: repeat(4, 52px); }
   .dl-icons-group:last-child .dl-icons { flex-wrap: wrap; }
   .dl-icons-group:first-child .icon-item img { width: 52px; height: 52px; }
-  .dl-icons-group:last-child .icon-item img { width: 72px; height: 72px; }
+  .dl-icons-group:last-child .icon-item img { width: 60px; height: 100px; }
 
   .dl-series { gap: 24px; }
 
