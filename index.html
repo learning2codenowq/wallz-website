@@ -115,42 +115,536 @@
     <p>Wallz works on a limited number of residential projects each season through a structured Design and Consultation process.</p>
   </section>
 
-  <!-- LEAD CAPTURE FORM -->
+  <!-- PROJECT APPLICATION FORM -->
   <section id="apply">
     <div class="apply-inner">
-      <p class="apply-label">Apply for Project</p>
-      <h2 class="apply-heading">Begin with understanding.</h2>
-      <p class="apply-sub">Tell us about your space. We will be in touch if your project is a fit for the current season.</p>
-      <form id="apply-form" class="apply-form" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
+
+      <div class="wf-progress">
+        <div class="wf-progress-bar"><div class="wf-progress-fill" id="wf-fill"></div></div>
+        <span class="wf-progress-label" id="wf-prog-label">Step 1 of 13</span>
+      </div>
+
+      <div class="wf-steps" id="wf-steps">
+
+        <!-- STEP 1 -->
+        <div class="wf-step" data-step="1">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">01</span>
+              <div>
+                <div class="wf-step-q" id="q1-label">Which statement feels most like you today?</div>
+                <div class="wf-answer-preview" id="q1-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk1"></div>
           </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          <div class="wf-step-body active" id="body1">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q1" data-val="I'm building a new home and want to get it right from the start">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">I'm building a new home and want to get it right from the start</span>
+              </label>
+              <label class="wf-option" data-group="q1" data-val="I'm renovating an existing home that no longer reflects me">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">I'm renovating an existing home that no longer reflects me</span>
+              </label>
+              <label class="wf-option" data-group="q1" data-val="I've recently purchased a property and need professional guidance">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">I've recently purchased a property and need professional guidance</span>
+              </label>
+              <label class="wf-option" data-group="q1" data-val="I know something needs to change but I'm not sure where to begin">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">I know something needs to change but I'm not sure where to begin</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(1)" id="next1" disabled>Continue</button>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="+971 50 000 0000" required />
+
+        <!-- STEP 2 -->
+        <div class="wf-step" data-step="2">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">02</span>
+              <div>
+                <div class="wf-step-q" id="q2-label">What would make this project successful for you?</div>
+                <div class="wf-answer-preview" id="q2-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk2"></div>
           </div>
-          <div class="form-group">
-            <label for="enquiry">Enquiry Type</label>
-            <select id="enquiry" name="enquiry" required>
-              <option value="" disabled selected>Select one</option>
-              <option value="Residential Design">Residential Design</option>
-              <option value="Design Consultation">Design Consultation</option>
-              <option value="Research Collaboration">Research Collaboration</option>
-              <option value="Other">Other</option>
+          <div class="wf-step-body" id="body2">
+            <p class="wf-hint">Choose up to 3.</p>
+            <div class="wf-options">
+              <label class="wf-option" data-group="q2" data-val="A home that feels calm and comfortable">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">A home that feels calm and comfortable</span>
+              </label>
+              <label class="wf-option" data-group="q2" data-val="A home that feels luxurious and elevated">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">A home that feels luxurious and elevated</span>
+              </label>
+              <label class="wf-option" data-group="q2" data-val="Better functionality for everyday life">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Better functionality for everyday life</span>
+              </label>
+              <label class="wf-option" data-group="q2" data-val="A stronger reflection of my personality">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">A stronger reflection of my personality</span>
+              </label>
+              <label class="wf-option" data-group="q2" data-val="Better use of space">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Better use of space</span>
+              </label>
+              <label class="wf-option" data-group="q2" data-val="Increased property value">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Increased property value</span>
+              </label>
+              <label class="wf-option" data-group="q2" data-val="A complete transformation">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">A complete transformation</span>
+              </label>
+            </div>
+            <p class="wf-max-note" id="q2-maxnote"></p>
+            <button class="wf-next" onclick="nextStep(2)" id="next2" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="wf-step" data-step="3">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">03</span>
+              <div>
+                <div class="wf-step-q" id="q3-label">Which best describes the scale of your project?</div>
+                <div class="wf-answer-preview" id="q3-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk3"></div>
+          </div>
+          <div class="wf-step-body" id="body3">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q3" data-val="Full Home">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Full Home</span>
+              </label>
+              <label class="wf-option" data-group="q3" data-val="Multiple Rooms">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Multiple Rooms</span>
+              </label>
+              <label class="wf-option" data-group="q3" data-val="One Key Space">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">One Key Space</span>
+              </label>
+              <label class="wf-option" data-group="q3" data-val="I'd Like Wallz To Assess My Project">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">I'd Like Wallz To Assess My Project</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(3)" id="next3" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="wf-step" data-step="4">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">04</span>
+              <div>
+                <div class="wf-step-q" id="q4-label">What type of property are we designing?</div>
+                <div class="wf-answer-preview" id="q4-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk4"></div>
+          </div>
+          <div class="wf-step-body" id="body4">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q4" data-val="Apartment">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Apartment</span>
+              </label>
+              <label class="wf-option" data-group="q4" data-val="Villa">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Villa</span>
+              </label>
+              <label class="wf-option" data-group="q4" data-val="Townhouse">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Townhouse</span>
+              </label>
+              <label class="wf-option" data-group="q4" data-val="Penthouse">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Penthouse</span>
+              </label>
+              <label class="wf-option" data-group="q4" data-val="Other">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Other</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(4)" id="next4" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="wf-step" data-step="5">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">05</span>
+              <div>
+                <div class="wf-step-q" id="q5-label">Where is your project located?</div>
+                <div class="wf-answer-preview" id="q5-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk5"></div>
+          </div>
+          <div class="wf-step-body" id="body5">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q5" data-val="Dubai">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Dubai</span>
+              </label>
+              <label class="wf-option" data-group="q5" data-val="Abu Dhabi">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Abu Dhabi</span>
+              </label>
+              <label class="wf-option" data-group="q5" data-val="Sharjah">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Sharjah</span>
+              </label>
+              <label class="wf-option" data-group="q5" data-val="Northern Emirates">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Northern Emirates</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(5)" id="next5" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 6 — Dubai only -->
+        <div class="wf-step" data-step="6" id="step6-row" style="display:none;">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">06</span>
+              <div>
+                <div class="wf-step-q" id="q6-label">Which area is your project located in?</div>
+                <div class="wf-answer-preview" id="q6-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk6"></div>
+          </div>
+          <div class="wf-step-body" id="body6">
+            <select class="wf-select" id="q6-select" onchange="onSelectChange(6)">
+              <option value="" disabled selected>Select area</option>
+              <option>Dubai Hills Estate</option>
+              <option>Palm Jumeirah</option>
+              <option>Emirates Hills</option>
+              <option>Arabian Ranches</option>
+              <option>Jumeirah Golf Estates</option>
+              <option>Dubai Marina</option>
+              <option>Downtown Dubai</option>
+              <option>Business Bay</option>
+              <option>Al Barari</option>
+              <option>Tilal Al Ghaf</option>
+              <option>Damac Hills</option>
+              <option>Dubai Creek Harbour</option>
+              <option>Jumeirah</option>
+              <option>Umm Suqeim</option>
+              <option>Other</option>
             </select>
+            <button class="wf-next" onclick="nextStep(6)" id="next6" disabled>Continue</button>
           </div>
         </div>
-        <button type="submit" class="form-submit">Submit Application</button>
-        <p class="form-note" id="form-status"></p>
-      </form>
+
+        <!-- STEP 7 -->
+        <div class="wf-step" data-step="7">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">07</span>
+              <div>
+                <div class="wf-step-q" id="q7-label">How would you like Wallz to be involved?</div>
+                <div class="wf-answer-preview" id="q7-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk7"></div>
+          </div>
+          <div class="wf-step-body" id="body7">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q7" data-val="Full Home Interior Design">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Full Home Interior Design</span>
+              </label>
+              <label class="wf-option" data-group="q7" data-val="Partial Home Interior Design">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Partial Home Interior Design</span>
+              </label>
+              <label class="wf-option" data-group="q7" data-val="Renovation Consultation">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Renovation Consultation</span>
+              </label>
+              <label class="wf-option" data-group="q7" data-val="Contractor Assessment">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Contractor Assessment</span>
+              </label>
+              <label class="wf-option" data-group="q7" data-val="Project Management">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">Project Management</span>
+              </label>
+              <label class="wf-option" data-group="q7" data-val="I'd Like Wallz To Recommend The Best Approach">
+                <div class="wf-checkbox"></div>
+                <span class="wf-option-label">I'd Like Wallz To Recommend The Best Approach</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(7)" id="next7" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 8 -->
+        <div class="wf-step" data-step="8">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">08</span>
+              <div>
+                <div class="wf-step-q" id="q8-label">Is this your first renovation or design project?</div>
+                <div class="wf-answer-preview" id="q8-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk8"></div>
+          </div>
+          <div class="wf-step-body" id="body8">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q8" data-val="Yes">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Yes</span>
+              </label>
+              <label class="wf-option" data-group="q8" data-val="No">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">No</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(8)" id="next8" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 9 -->
+        <div class="wf-step" data-step="9">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">09</span>
+              <div>
+                <div class="wf-step-q" id="q9-label">Where are you in the journey?</div>
+                <div class="wf-answer-preview" id="q9-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk9"></div>
+          </div>
+          <div class="wf-step-body" id="body9">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q9" data-val="Exploring possibilities">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Exploring possibilities</span>
+              </label>
+              <label class="wf-option" data-group="q9" data-val="Planning a newly purchased property">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Planning a newly purchased property</span>
+              </label>
+              <label class="wf-option" data-group="q9" data-val="Preparing for renovation">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Preparing for renovation</span>
+              </label>
+              <label class="wf-option" data-group="q9" data-val="Already under renovation">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Already under renovation</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(9)" id="next9" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 10 -->
+        <div class="wf-step" data-step="10">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">10</span>
+              <div>
+                <div class="wf-step-q" id="q10-label">What matters most to you during this process?</div>
+                <div class="wf-answer-preview" id="q10-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk10"></div>
+          </div>
+          <div class="wf-step-body" id="body10">
+            <p class="wf-hint">Choose one.</p>
+            <div class="wf-options">
+              <label class="wf-option" data-group="q10" data-val="Design Quality">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Design Quality</span>
+              </label>
+              <label class="wf-option" data-group="q10" data-val="Time Efficiency">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Time Efficiency</span>
+              </label>
+              <label class="wf-option" data-group="q10" data-val="Avoiding Costly Mistakes">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Avoiding Costly Mistakes</span>
+              </label>
+              <label class="wf-option" data-group="q10" data-val="Long-Term Value">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Long-Term Value</span>
+              </label>
+              <label class="wf-option" data-group="q10" data-val="Having Expert Guidance">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Having Expert Guidance</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(10)" id="next10" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 11 -->
+        <div class="wf-step" data-step="11">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">11</span>
+              <div>
+                <div class="wf-step-q" id="q11-label">Estimated investment for your Wallz Home</div>
+                <div class="wf-answer-preview" id="q11-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk11"></div>
+          </div>
+          <div class="wf-step-body" id="body11">
+            <div class="wf-options">
+              <label class="wf-option" data-group="q11" data-val="Under AED 25,000">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">Under AED 25,000</span>
+              </label>
+              <label class="wf-option" data-group="q11" data-val="AED 25,000 – 50,000">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">AED 25,000 – 50,000</span>
+              </label>
+              <label class="wf-option" data-group="q11" data-val="AED 50,000 – 100,000">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">AED 50,000 – 100,000</span>
+              </label>
+              <label class="wf-option" data-group="q11" data-val="AED 100,000 – 250,000">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">AED 100,000 – 250,000</span>
+              </label>
+              <label class="wf-option" data-group="q11" data-val="AED 250,000 – 500,000">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">AED 250,000 – 500,000</span>
+              </label>
+              <label class="wf-option" data-group="q11" data-val="AED 500,000 – 1M">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">AED 500,000 – 1M</span>
+              </label>
+              <label class="wf-option" data-group="q11" data-val="AED 1M+">
+                <div class="wf-radio"></div>
+                <span class="wf-option-label">AED 1M+</span>
+              </label>
+            </div>
+            <button class="wf-next" onclick="nextStep(11)" id="next11" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 12 -->
+        <div class="wf-step" data-step="12">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num">12</span>
+              <div>
+                <div class="wf-step-q" id="q12-label">Tell us about the home you're trying to create.</div>
+                <div class="wf-answer-preview" id="q12-preview"></div>
+              </div>
+            </div>
+            <div class="wf-step-check" id="chk12"></div>
+          </div>
+          <div class="wf-step-body" id="body12">
+            <p class="wf-hint">Don't worry about technical details. Tell us what you're hoping to feel when the project is complete.</p>
+            <textarea class="wf-text-area" id="q12-text" placeholder="Describe the feeling, the atmosphere, the life you want to live in this space..." rows="5"></textarea>
+            <button class="wf-next" onclick="nextStep(12)" id="next12" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 13 — Your Information -->
+        <div class="wf-step" data-step="13">
+          <div class="wf-step-header">
+            <div class="wf-step-left">
+              <span class="wf-step-num"></span>
+              <div class="wf-step-q" id="q13-label">Your Information</div>
+            </div>
+            <div class="wf-step-check" id="chk13"></div>
+          </div>
+          <div class="wf-step-body" id="body13">
+            <div class="wf-input-group">
+              <label class="wf-input-label">Full Name</label>
+              <input type="text" class="wf-text-input" id="q13-name" placeholder="Your full name" oninput="validateFinal()" />
+            </div>
+            <div class="wf-input-group">
+              <label class="wf-input-label">Phone Number</label>
+              <input type="tel" class="wf-text-input" id="q13-phone" placeholder="+971 50 000 0000" oninput="validateFinal()" />
+            </div>
+            <div class="wf-input-group">
+              <label class="wf-input-label">Email Address</label>
+              <input type="email" class="wf-text-input" id="q13-email" placeholder="your@email.com" oninput="validateFinal()" />
+            </div>
+            <div class="wf-input-group">
+              <label class="wf-input-label">Preferred Contact Method</label>
+              <div class="wf-options">
+                <label class="wf-option" data-group="q13-contact" data-val="WhatsApp">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">WhatsApp</span>
+                </label>
+                <label class="wf-option" data-group="q13-contact" data-val="Phone Call">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">Phone Call</span>
+                </label>
+                <label class="wf-option" data-group="q13-contact" data-val="Email">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">Email</span>
+                </label>
+              </div>
+            </div>
+            <div class="wf-input-group">
+              <label class="wf-input-label">How did you discover Wallz?</label>
+              <div class="wf-options">
+                <label class="wf-option" data-group="q13-source" data-val="Instagram">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">Instagram</span>
+                </label>
+                <label class="wf-option" data-group="q13-source" data-val="YouTube">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">YouTube</span>
+                </label>
+                <label class="wf-option" data-group="q13-source" data-val="Google">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">Google</span>
+                </label>
+                <label class="wf-option" data-group="q13-source" data-val="Recommendation">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">Recommendation</span>
+                </label>
+                <label class="wf-option" data-group="q13-source" data-val="Returning Client">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">Returning Client</span>
+                </label>
+                <label class="wf-option" data-group="q13-source" data-val="Other">
+                  <div class="wf-radio"></div>
+                  <span class="wf-option-label">Other</span>
+                </label>
+              </div>
+            </div>
+            <button class="wf-submit" onclick="submitForm()" id="btn-submit" disabled>Begin My Project Discovery</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="wf-success" id="wf-success">
+        <div class="wf-success-icon"></div>
+        <h3>Application Received.</h3>
+        <p>Thank you for sharing your vision with us. A member of the Wallz team will be in touch to discuss whether your project is a fit for the current season.</p>
+      </div>
+
     </div>
   </section>
 
