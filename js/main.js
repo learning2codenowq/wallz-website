@@ -83,18 +83,44 @@
   }
 
   function nextStep(fromStep) {
-    markDone(fromStep);
-    var order = getStepOrder();
-    var idx = order.indexOf(fromStep);
-    if (idx < order.length - 1) {
-      var nextS = order[idx + 1];
-      openStep(nextS);
-      setTimeout(function () {
-        var body = document.getElementById('body' + nextS);
-        if (body) body.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 60);
-    }
+  markDone(fromStep);
+  var order = getStepOrder();
+  var idx = order.indexOf(fromStep);
+  if (idx < order.length - 1) {
+    var nextS = order[idx + 1];
+    openStep(nextS);
+    setTimeout(function () {
+      var body = document.getElementById('body' + nextS);
+      if (body) body.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 60);
   }
+}
+
+function prevStep(fromStep) {
+  var order = getStepOrder();
+  var idx = order.indexOf(fromStep);
+  if (idx > 0) {
+    var prevS = order[idx - 1];
+    /* reopen previous step body */
+    document.querySelectorAll('.wf-step-body').forEach(function (b) {
+      b.classList.remove('active');
+    });
+    var body = document.getElementById('body' + prevS);
+    if (body) body.classList.add('active');
+    currentStep = prevS;
+    /* unmark the previous step as done */
+    var chk = document.getElementById('chk' + prevS);
+    if (chk) chk.classList.remove('done');
+    var q = document.getElementById('q' + prevS + '-label');
+    if (q) q.classList.remove('answered');
+    updateProgress();
+    setTimeout(function () {
+      if (body) body.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 60);
+  }
+}
+
+window.prevStep = prevStep;
 
   function getPreview(step) {
     var v = answers['q' + step];
@@ -162,6 +188,38 @@
     var nextBtn = document.getElementById('next' + stepNum);
     if (nextBtn) nextBtn.disabled = !sel.value;
   }
+  /* Custom dropdown for step 6 */
+var customSelect = document.getElementById('q6-custom');
+var trigger = document.getElementById('q6-trigger');
+var selectedText = document.getElementById('q6-selected-text');
+var dropdown = document.getElementById('q6-dropdown');
+
+if (trigger) {
+  trigger.addEventListener('click', function () {
+    customSelect.classList.toggle('open');
+  });
+}
+
+document.querySelectorAll('#q6-dropdown .wf-custom-option').forEach(function (opt) {
+  opt.addEventListener('click', function () {
+    var val = opt.dataset.val;
+    answers['q6'] = val;
+    selectedText.textContent = val;
+    document.querySelectorAll('#q6-dropdown .wf-custom-option').forEach(function (o) {
+      o.classList.remove('selected');
+    });
+    opt.classList.add('selected');
+    customSelect.classList.remove('open');
+    var next6 = document.getElementById('next6');
+    if (next6) next6.disabled = false;
+  });
+});
+
+document.addEventListener('click', function (e) {
+  if (customSelect && !customSelect.contains(e.target)) {
+    customSelect.classList.remove('open');
+  }
+});
 
   function validateFinal() {
     var name = (document.getElementById('q13-name').value || '').trim();

@@ -47,7 +47,7 @@
 
       <!-- SLIDE 1 — Wallz Tablets -->
       <div class="hero-slide active" data-index="0">
-        <img src="assets/images/hero-1.png" alt="Wallz Tablets" class="hero-bg" />
+        <img src="assets/images/hero-1.webp" alt="Wallz Tablets" class="hero-bg" />
         <div class="hero-scrim"></div>
         <p class="hero-toplabel">Tablet Rain</p>
         <div class="hero-info">
@@ -66,7 +66,7 @@
 
       <!-- SLIDE 2 — Places Worldwide -->
       <div class="hero-slide" data-index="1">
-        <img src="assets/images/hero-2.png" alt="Places Worldwide" class="hero-bg" />
+        <img src="assets/images/hero-2.webp" alt="Places Worldwide" class="hero-bg" />
         <div class="hero-scrim"></div>
         <p class="hero-toplabel">The World Issue</p>
         <div class="hero-info">
@@ -85,7 +85,7 @@
 
       <!-- SLIDE 3 — Placeholder -->
       <div class="hero-slide" data-index="2">
-        <img src="assets/images/hero-3.jpg" alt="Wallz project" class="hero-bg" />
+        <img src="assets/images/hero-3.webp" alt="Wallz project" class="hero-bg" />
         <div class="hero-scrim"></div>
         <p class="hero-toplabel">Coming Soon</p>
         <div class="hero-info">
@@ -157,7 +157,10 @@
                 <span class="wf-option-label">I know something needs to change but I'm not sure where to begin</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(1)" id="next1" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(1)" id="back1" style="visibility:hidden">Back</button>
+              <button class="wf-next" onclick="nextStep(1)" id="next1" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -206,7 +209,10 @@
               </label>
             </div>
             <p class="wf-max-note" id="q2-maxnote"></p>
-            <button class="wf-next" onclick="nextStep(2)" id="next2" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(2)" id="back2">Back</button>
+              <button class="wf-next" onclick="nextStep(2)" id="next2" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -241,7 +247,10 @@
                 <span class="wf-option-label">I'd Like Wallz To Assess My Project</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(3)" id="next3" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(3)" id="back3">Back</button>
+              <button class="wf-next" onclick="nextStep(3)" id="next3" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -280,7 +289,10 @@
                 <span class="wf-option-label">Other</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(4)" id="next4" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(4)" id="back4">Back</button>
+              <button class="wf-next" onclick="nextStep(4)" id="next4" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -315,7 +327,10 @@
                 <span class="wf-option-label">Northern Emirates</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(5)" id="next5" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(5)" id="back5">Back</button>
+              <button class="wf-next" onclick="nextStep(5)" id="next5" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -332,25 +347,33 @@
             <div class="wf-step-check" id="chk6"></div>
           </div>
           <div class="wf-step-body" id="body6">
-            <select class="wf-select" id="q6-select" onchange="onSelectChange(6)">
-              <option value="" disabled selected>Select area</option>
-              <option>Dubai Hills Estate</option>
-              <option>Palm Jumeirah</option>
-              <option>Emirates Hills</option>
-              <option>Arabian Ranches</option>
-              <option>Jumeirah Golf Estates</option>
-              <option>Dubai Marina</option>
-              <option>Downtown Dubai</option>
-              <option>Business Bay</option>
-              <option>Al Barari</option>
-              <option>Tilal Al Ghaf</option>
-              <option>Damac Hills</option>
-              <option>Dubai Creek Harbour</option>
-              <option>Jumeirah</option>
-              <option>Umm Suqeim</option>
-              <option>Other</option>
-            </select>
-            <button class="wf-next" onclick="nextStep(6)" id="next6" disabled>Continue</button>
+            <div class="wf-custom-select" id="q6-custom">
+              <div class="wf-custom-select-trigger" id="q6-trigger">
+                <span id="q6-selected-text">Select area</span>
+                <svg class="wf-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <div class="wf-custom-select-dropdown" id="q6-dropdown">
+                <div class="wf-custom-option" data-val="Dubai Hills Estate">Dubai Hills Estate</div>
+                <div class="wf-custom-option" data-val="Palm Jumeirah">Palm Jumeirah</div>
+                <div class="wf-custom-option" data-val="Emirates Hills">Emirates Hills</div>
+                <div class="wf-custom-option" data-val="Arabian Ranches">Arabian Ranches</div>
+                <div class="wf-custom-option" data-val="Jumeirah Golf Estates">Jumeirah Golf Estates</div>
+                <div class="wf-custom-option" data-val="Dubai Marina">Dubai Marina</div>
+                <div class="wf-custom-option" data-val="Downtown Dubai">Downtown Dubai</div>
+                <div class="wf-custom-option" data-val="Business Bay">Business Bay</div>
+                <div class="wf-custom-option" data-val="Al Barari">Al Barari</div>
+                <div class="wf-custom-option" data-val="Tilal Al Ghaf">Tilal Al Ghaf</div>
+                <div class="wf-custom-option" data-val="Damac Hills">Damac Hills</div>
+                <div class="wf-custom-option" data-val="Dubai Creek Harbour">Dubai Creek Harbour</div>
+                <div class="wf-custom-option" data-val="Jumeirah">Jumeirah</div>
+                <div class="wf-custom-option" data-val="Umm Suqeim">Umm Suqeim</div>
+                <div class="wf-custom-option" data-val="Other">Other</div>
+              </div>
+            </div>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(6)" id="back6">Back</button>
+              <button class="wf-next" onclick="nextStep(6)" id="next6" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -393,7 +416,10 @@
                 <span class="wf-option-label">I'd Like Wallz To Recommend The Best Approach</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(7)" id="next7" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(7)" id="back7">Back</button>
+              <button class="wf-next" onclick="nextStep(7)" id="next7" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -420,7 +446,10 @@
                 <span class="wf-option-label">No</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(8)" id="next8" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(8)" id="back8">Back</button>
+              <button class="wf-next" onclick="nextStep(8)" id="next8" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -455,7 +484,10 @@
                 <span class="wf-option-label">Already under renovation</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(9)" id="next9" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(9)" id="back9">Back</button>
+              <button class="wf-next" onclick="nextStep(9)" id="next9" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -495,7 +527,10 @@
                 <span class="wf-option-label">Having Expert Guidance</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(10)" id="next10" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(10)" id="back10">Back</button>
+              <button class="wf-next" onclick="nextStep(10)" id="next10" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -542,7 +577,10 @@
                 <span class="wf-option-label">AED 1M+</span>
               </label>
             </div>
-            <button class="wf-next" onclick="nextStep(11)" id="next11" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(11)" id="back11">Back</button>
+              <button class="wf-next" onclick="nextStep(11)" id="next11" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -561,7 +599,10 @@
           <div class="wf-step-body" id="body12">
             <p class="wf-hint">Don't worry about technical details. Tell us what you're hoping to feel when the project is complete.</p>
             <textarea class="wf-text-area" id="q12-text" placeholder="Describe the feeling, the atmosphere, the life you want to live in this space..." rows="5"></textarea>
-            <button class="wf-next" onclick="nextStep(12)" id="next12" disabled>Continue</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(12)" id="back12">Back</button>
+              <button class="wf-next" onclick="nextStep(12)" id="next12" disabled>Continue</button>
+            </div>
           </div>
         </div>
 
@@ -633,7 +674,10 @@
                 </label>
               </div>
             </div>
-            <button class="wf-submit" onclick="submitForm()" id="btn-submit" disabled>Begin My Project Discovery</button>
+            <div class="wf-nav">
+              <button class="wf-back" onclick="prevStep(13)" id="back13">Back</button>
+              <button class="wf-submit" onclick="submitForm()" id="btn-submit" disabled>Begin My Project Discovery</button>
+            </div>
           </div>
         </div>
 
@@ -685,12 +729,18 @@
       </div>
     </div>
     <div class="dl-series">
-      <img src="assets/logos/timeplay.svg" alt="TIMEPLAY" class="series-logo" />
-      <img src="assets/logos/feelingsinform.svg" alt="FEELINGS IN FORM" class="series-logo" />
-      <img src="assets/logos/placesworldwide.svg" alt="PLACES WORLDWIDE" class="series-logo" />
-      <img src="assets/logos/Iconica.svg" alt="ICONICA" class="series-logo" />
-      <img src="assets/logos/nature's finest.svg" alt="NATURE'S FINEST" class="series-logo" />
-    </div>
+  <div class="dl-series-left">
+    <img src="assets/logos/timeplay.svg" alt="TIMEPLAY" class="series-logo" />
+    <img src="assets/logos/feelingsinform.svg" alt="FEELINGS IN FORM" class="series-logo" />
+  </div>
+  <div class="dl-series-center">
+    <img src="assets/logos/placesworldwide.svg" alt="PLACES WORLDWIDE" class="series-logo series-logo--hero" />
+  </div>
+  <div class="dl-series-right">
+    <img src="assets/logos/Iconica.svg" alt="ICONICA" class="series-logo" />
+    <img src="assets/logos/nature's finest.svg" alt="NATURE'S FINEST" class="series-logo" />
+  </div>
+</div>
     <div class="dl-divider"></div>
     <div class="dl-icons-wrap">
       <div class="dl-icons-labels-row">
@@ -729,7 +779,8 @@
   <!-- FOOTER -->
   <footer id="footer">
     <p class="footer-disclaimer">© 2026 Wallz. All Rights Reserved.<br>All content published by Wallz, including but not limited to concepts, methodologies, frameworks, original series, design systems, research, written content, visual assets, graphics, illustrations, icons, branding elements, logos, trademarks, proprietary terminology, digital products, and intellectual property is the exclusive property of Wallz and is protected under applicable copyright, trademark, and intellectual property laws. No part of this website, its content, or its intellectual property may be reproduced, distributed, modified, republished, transmitted, displayed, stored, or used in any form without the prior written consent of Wallz.</p>
-    <p class="footer-disclaimer">Wallz®, Wallz Tablet™, Design Language by Wallz™, and all associated original concepts, creative systems, and brand assets and visuals including logos are proprietary creations developed exclusively by Wallz. Unauthorized use, imitation, replication, or commercial exploitation of any Wallz intellectual property may result in legal action. Built on original thinking. Protected by law.</p>
+
+    <p class="footer-disclaimer">Wallz®, Wallz Tablet™, Design Language by Wallz™, and all associated original concepts, creative systems, and brand assets and visuals including logos are proprietary creations developed exclusively by Wallz. Unauthorized use, imitation, replication, or commercial exploitation of any Wallz intellectual property may result in legal action.<br>Built on original thinking. Protected by law.</p>
   </footer>
 
   <script src="js/main.js"></script>
