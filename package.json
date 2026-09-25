@@ -3,6 +3,7 @@
     "sharp": "^0.35.2"
   },
   "scripts": {
-    "images": "node scripts/optimize-images.js"
+    "images": "node scripts/optimize-images.js",
+    "favicon": "node scripts/make-favicon.js"
   }
 }
