@@ -40,7 +40,7 @@
   Array.prototype.forEach.call(galleries, function (gallery) {
     var track = gallery.querySelector('.gallery-track');
     var slides = gallery.querySelectorAll('.gallery-slide');
-    var imgs = gallery.querySelectorAll('img');
+    var imgs = gallery.querySelectorAll('img[data-src]');
     var current = 0;
 
     if (slides.length === 0) return;

@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
 </head>
 <body>
 
@@ -49,12 +49,16 @@
   <section id="hero" aria-label="Featured projects">
     <div class="hero-slides">
 
-      <!-- SLIDE 1 — Brand intro (headline is part of the image, CTA only) -->
+      <!-- SLIDE 1 — Brand intro. Desktop headline is live text over a text-free image;
+           the mobile image still has the headline baked in. -->
       <div class="hero-slide active" data-index="0">
         <picture>
           <source media="(max-width: 768px)" srcset="assets/images/hero/mobile-1.webp 1080w, assets/images/hero/mobile-1-1440.webp 1440w" sizes="100vw" />
-          <img src="assets/images/hero/desktop-1-1920.webp" srcset="assets/images/hero/desktop-1-1920.webp 1920w, assets/images/hero/desktop-1-2560.webp 2560w, assets/images/hero/desktop-1-3840.webp 3840w" sizes="100vw" alt="A Dubai based Residential Interior Design Firm for Home Psychology &amp; Spatial Intelligence" class="hero-bg" fetchpriority="high" />
+          <img src="assets/images/hero/desktop-1-1920.webp" srcset="assets/images/hero/desktop-1-1920.webp 1920w, assets/images/hero/desktop-1-2560.webp 2560w, assets/images/hero/desktop-1-3840.webp 3840w" sizes="100vw" alt="Aerial view of a catamaran on turquoise water" class="hero-bg" fetchpriority="high" />
         </picture>
+        <div class="hero-art">
+          <h1 class="hero-headline">A Dubai based Residential Interior Design Firm for<br>Home Psychology &amp; Spatial Intelligence</h1>
+        </div>
       </div>
 
       <!-- SLIDE 2 — Wallz Tablets -->
@@ -693,7 +697,19 @@
   <section id="gallery" aria-roledescription="carousel" aria-label="Wallz gallery">
     <div class="gallery gallery--desktop" data-gallery>
       <div class="gallery-track">
-        <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 5"><img data-src="assets/images/slideshow/desktop-1-1920.webp" data-srcset="assets/images/slideshow/desktop-1-1920.webp 1920w, assets/images/slideshow/desktop-1-2560.webp 2560w" sizes="100vw" alt="Wallz work 1" decoding="async" /></div>
+        <div class="gallery-slide gallery-slide--series" role="group" aria-roledescription="slide" aria-label="1 of 5">
+          <img data-src="assets/images/slideshow/desktop-1-1920.webp" data-srcset="assets/images/slideshow/desktop-1-1920.webp 1920w, assets/images/slideshow/desktop-1-2560.webp 2560w" sizes="100vw" alt="Wallz original series" decoding="async" />
+          <!-- Live logos over the text-free image; positions match the client artwork -->
+          <svg class="series-ig-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span class="series-ig-name">Wallz</span>
+          <span class="series-ig-handle">@wallz.ae</span>
+          <img src="assets/logos/designlanguagebywallz-white.svg" alt="Design Language by Wallz" class="series-logo-art series-logo-art--dl" />
+          <img src="assets/logos/nature's finest.svg" alt="Nature's Finest" class="series-logo-art series-logo-art--natures" />
+          <img src="assets/logos/timeplay.svg" alt="Timeplay" class="series-logo-art series-logo-art--timeplay" />
+          <img src="assets/logos/placesworldwide.svg" alt="Places Worldwide" class="series-logo-art series-logo-art--places" />
+          <img src="assets/logos/feelingsinform.svg" alt="Feelings in Form" class="series-logo-art series-logo-art--feelings" />
+          <img src="assets/logos/Iconica.svg" alt="Iconica" class="series-logo-art series-logo-art--iconica" />
+        </div>
         <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 5"><img data-src="assets/images/slideshow/desktop-2-1920.webp" data-srcset="assets/images/slideshow/desktop-2-1920.webp 1920w, assets/images/slideshow/desktop-2-2560.webp 2560w" sizes="100vw" alt="Wallz work 2" decoding="async" /></div>
         <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 5"><img data-src="assets/images/slideshow/desktop-3-1920.webp" data-srcset="assets/images/slideshow/desktop-3-1920.webp 1920w, assets/images/slideshow/desktop-3-2560.webp 2560w" sizes="100vw" alt="Wallz work 3" decoding="async" /></div>
         <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 5"><img data-src="assets/images/slideshow/desktop-4-1920.webp" data-srcset="assets/images/slideshow/desktop-4-1920.webp 1920w, assets/images/slideshow/desktop-4-2560.webp 2560w" sizes="100vw" alt="Wallz work 4" decoding="async" /></div>
@@ -783,6 +799,6 @@
     <p class="footer-disclaimer">Wallz®, Wallz Tablet™, Design Language by Wallz™, and all associated original concepts, creative systems, and brand assets and visuals including logos are proprietary creations developed exclusively by Wallz. Unauthorized use, imitation, replication, or commercial exploitation of any Wallz intellectual property may result in legal action.</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>

@@ -65,6 +65,7 @@ a { color: inherit; text-decoration: none; }
   min-height: 560px;
   overflow: hidden;
   background: var(--black);
+  container-type: size;
 }
 
 .hero-slides { position: absolute; inset: 0; }
@@ -84,6 +85,35 @@ a { color: inherit; text-decoration: none; }
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+/* Live text over hero 1. .hero-art is a 16:9 box sized and centred exactly
+   like the cover-fitted image, so % positions and cqi font sizes stay locked
+   to the artwork at any screen size. Values measured from the client file
+   (6000 × 3375): left 338px, first line box top 2098px, 232px type. */
+.hero-art {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100cqw, 177.78cqh);
+  aspect-ratio: 16 / 9;
+  transform: translate(-50%, -50%);
+  container-type: inline-size;
+  pointer-events: none;
+}
+
+.hero-headline {
+  position: absolute;
+  left: 5.633%;
+  top: 62.17%;
+  margin: 0;
+  font-family: 'II Vorkurs', var(--font);
+  font-weight: 700;
+  font-size: 3.865cqi;
+  line-height: 0.9617;
+  letter-spacing: -0.0668em;
+  white-space: nowrap;
+  color: var(--white);
 }
 
 /* Top-right episode label */
@@ -228,13 +258,13 @@ a { color: inherit; text-decoration: none; }
 ══════════════════════════════════════ */
 @font-face {
   font-family: 'II Vorkurs';
-  src: url('assets/fonts/IIVorkurs-Medium.ttf') format('truetype');
+  src: url('../assets/fonts/II%20Vorkurs%20Medium.ttf') format('truetype');
   font-weight: 500;
   font-display: swap;
 }
 @font-face {
   font-family: 'II Vorkurs';
-  src: url('assets/fonts/IIVorkurs-Bold.ttf') format('truetype');
+  src: url('../assets/fonts/II%20Vorkurs%20Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
 }
@@ -774,17 +804,61 @@ a { color: inherit; text-decoration: none; }
 }
 
 .gallery-slide {
+  position: relative;
   flex: 0 0 100%;
   height: 100%;
+  overflow: hidden;
+  container-type: inline-size;
 }
 
-.gallery-slide img {
+.gallery-slide img[data-src] {
   width: 100%;
   height: 100%;
   object-fit: cover;
   user-select: none;
   -webkit-user-drag: none;
 }
+
+/* Series slide: live logos over the text-free image. The slide is exactly
+   16:9 like the artwork, so every value is a % of the client file
+   (6000 × 3375). Font sizes use cqi (1cqi = 1% of slide width). */
+.gallery-slide--series > :not(img[data-src]) {
+  position: absolute;
+  pointer-events: none;
+}
+
+.series-logo-art { height: auto; }
+
+/* Logos ship dark; the Design Language one has its own white version */
+.series-logo-art:not(.series-logo-art--dl) { filter: brightness(0) invert(1); }
+
+.series-logo-art--dl       { left: 79.95%;  top: 15.585%; width: 15.317%; }
+.series-logo-art--natures  { left: 2.483%;  top: 84.563%; width: 14.85%; }
+.series-logo-art--timeplay { left: 21.35%;  top: 83.407%; width: 17.1%; }
+.series-logo-art--places   { left: 45.25%;  top: 71.526%; width: 9.533%; }
+.series-logo-art--feelings { left: 62.25%;  top: 84.563%; width: 15.833%; }
+.series-logo-art--iconica  { left: 80.317%; top: 82.104%; width: 19.655%; }
+
+.series-ig-icon {
+  left: 79.883%;
+  top: 7.259%;
+  width: 3.067%;
+  height: auto;
+  color: var(--white);
+}
+
+.series-ig-name,
+.series-ig-handle {
+  display: block;
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--white);
+}
+
+.series-ig-name   { left: 83.483%; top: 7.321%;  font-size: 1.772cqi; }
+.series-ig-handle { left: 83.597%; top: 10.67%;  font-size: 1.1127cqi; }
 
 /* Frosted-glass arrow buttons */
 .gallery-arrow {
@@ -1073,6 +1147,13 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 768px) {
 
   #nav { padding: 0 20px; }
+
+  /* Mobile hero 1 image has the headline baked in, so hide the live text
+     visually but keep the h1 for screen readers and search engines */
+  .hero-art {
+    width: 1px; height: 1px; overflow: hidden;
+    clip-path: inset(50%);
+  }
 
   /* Match the 9:16 mobile artwork */
   #hero { height: min(110vh, 177.78vw); min-height: 0; }
