@@ -1,0 +1,4 @@
+node_modules/
+
+# 4K source images: optimized WebP versions live in assets/images
+assets/originals/

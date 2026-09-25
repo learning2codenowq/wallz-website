@@ -59,8 +59,10 @@ a { color: inherit; text-decoration: none; }
 #hero {
   position: relative;
   width: 100%;
-  height: 110vh;
-  min-height: 650px;
+  /* Never taller than the 16:9 artwork, so the headline baked into
+     slide 1 is never cropped at the sides */
+  height: min(110vh, 56.25vw);
+  min-height: 560px;
   overflow: hidden;
   background: var(--black);
 }
@@ -135,22 +137,16 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* Wallz Tablets — wide logo, control by width */
-.hero-slide[data-index="0"] .hero-series-logo {
+.hero-slide[data-index="1"] .hero-series-logo {
   width: 200px;
   max-height: none;
 }
 
 /* Places Worldwide — tall/stacked logo, control by height */
-.hero-slide[data-index="1"] .hero-series-logo {
+.hero-slide[data-index="2"] .hero-series-logo {
   width: auto;
   height: 160px;
   max-height: 160px;
-}
-
-/* Slide 3 — adjust as needed once real logo is confirmed */
-.hero-slide[data-index="0"] .hero-series-logo {
-  width: 200px;
-  max-height: none;
 }
 
 /* Instagram row */
@@ -763,75 +759,87 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ══════════════════════════════════════
-   CINEMATIC BANNERS
+   GALLERY SLIDESHOW
 ══════════════════════════════════════ */
-.cinematic-banner {
-  position: relative;
+#gallery {
   background: var(--black);
-  color: var(--white);
-  padding: 120px 40px;
-  text-align: center;
 }
 
-.cinematic-banner--light { background: #0a0a0a; }
-
-.cinematic-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.62);
-  z-index: 1;
-}
-
-.banner-inner {
+.gallery {
   position: relative;
-  z-index: 2;
-  max-width: 700px;
-  margin: 0 auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0a0a0a;
+  touch-action: pan-y;
+}
+
+.gallery--mobile { display: none; aspect-ratio: 9 / 16; }
+
+.gallery-track {
   display: flex;
-  flex-direction: column;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.gallery-slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Frosted-glass arrow buttons */
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
   align-items: center;
-  gap: 24px;
-}
-
-.banner-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--grey-mid);
-}
-
-.banner-heading {
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-}
-
-.banner-body {
-  font-size: 15px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.55);
-  max-width: 560px;
-}
-
-.banner-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  font-weight: 500;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 50%;
   color: var(--white);
-  border: 1px solid rgba(255,255,255,0.25);
-  padding: 12px 28px;
-  border-radius: 100px;
-  transition: border-color 0.2s, background 0.2s;
+  background: rgba(20,20,20,0.28);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
 }
 
-.banner-link:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+.gallery-arrow svg { width: 24px; height: 24px; }
 
-.platform-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.gallery-arrow--prev { left: 40px; }
+.gallery-arrow--next { right: 40px; }
+
+.gallery-arrow:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.6);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.gallery-arrow:active { transform: translateY(-50%) scale(0.96); }
+
+.gallery-arrow:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track { transition: none; }
+}
 
 /* ══════════════════════════════════════
    DESIGN LANGUAGE
@@ -1076,12 +1084,15 @@ a { color: inherit; text-decoration: none; }
 
   #nav { padding: 0 20px; }
 
+  /* Match the 9:16 mobile artwork */
+  #hero { height: min(110vh, 177.78vw); min-height: 0; }
+
   .hero-toplabel { right: 20px; top: 64px; }
 
   .hero-info {
     left: 20px;
     right: 20px;
-    bottom: 150px;
+    bottom: 112px;
     text-align: center;
     align-items: center;
     max-width: 100%;
@@ -1101,7 +1112,7 @@ a { color: inherit; text-decoration: none; }
   .hero-desc { text-align: center; max-width: 100%; }
 
   .hero-cta-wrap {
-    bottom: 80px;
+    bottom: 36px;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
@@ -1115,7 +1126,13 @@ a { color: inherit; text-decoration: none; }
 
   .form-submit { width: 100%; text-align: center; }
 
-  .cinematic-banner { padding: 80px 20px; }
+  .gallery--desktop { display: none; }
+  .gallery--mobile { display: block; }
+
+  .gallery-arrow { width: 46px; height: 46px; }
+  .gallery-arrow svg { width: 20px; height: 20px; }
+  .gallery-arrow--prev { left: 16px; }
+  .gallery-arrow--next { right: 16px; }
 
   #design-language { padding: 60px 20px; }
 

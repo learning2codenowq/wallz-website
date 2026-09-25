@@ -33,6 +33,68 @@
   startTimer();
 })();
 
+/* ── Gallery Slideshow (click / swipe only, no autoplay) ── */
+(function () {
+  var galleries = document.querySelectorAll('[data-gallery]');
+
+  Array.prototype.forEach.call(galleries, function (gallery) {
+    var track = gallery.querySelector('.gallery-track');
+    var slides = gallery.querySelectorAll('.gallery-slide');
+    var imgs = gallery.querySelectorAll('img');
+    var current = 0;
+
+    if (slides.length === 0) return;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-100 * current) + '%)';
+      Array.prototype.forEach.call(slides, function (s, i) {
+        s.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+      });
+    }
+
+    gallery.querySelector('.gallery-arrow--prev').addEventListener('click', function () { goTo(current - 1); });
+    gallery.querySelector('.gallery-arrow--next').addEventListener('click', function () { goTo(current + 1); });
+
+    /* Swipe on touch devices */
+    var startX = null, startY = null;
+    gallery.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, { passive: true });
+    gallery.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) goTo(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+
+    /* Images carry data-src so the hidden device's set never downloads.
+       Once this gallery is displayed and nears the viewport, load all
+       of its slides so off-screen ones are ready before the user clicks. */
+    function loadImages() {
+      Array.prototype.forEach.call(imgs, function (img) {
+        if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+        img.src = img.dataset.src;
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        loadImages();
+        io.disconnect();
+      }, { rootMargin: '600px 0px' });
+      io.observe(gallery);
+    } else {
+      loadImages();
+    }
+
+    goTo(0);
+  });
+})();
+
 /* ── Project Application Form ── */
 (function () {
 
