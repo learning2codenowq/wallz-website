@@ -1109,7 +1109,13 @@ a { color: inherit; text-decoration: none; }
 
   .hero-meta { justify-content: center; flex-wrap: wrap; }
 
-  .hero-desc { text-align: center; max-width: 100%; }
+  .hero-desc { text-align: center; max-width: 100%; font-size: 16px; }
+
+  /* No gradient over the Places Worldwide slide on mobile */
+  .hero-slide[data-index="2"] .hero-scrim { display: none; }
+
+  /* Let the two sentences flow together so they wrap into 3 lines */
+  .hero-desc br { display: none; }
 
   .hero-cta-wrap {
     bottom: 36px;
@@ -1119,6 +1125,7 @@ a { color: inherit; text-decoration: none; }
   }
 
   #tagline { padding: 60px 20px; }
+  #tagline p { font-size: 20px; }
 
   #apply { padding: 80px 20px; }
 
@@ -1146,7 +1153,26 @@ a { color: inherit; text-decoration: none; }
   .dl-icons-group:first-child .icon-item img { width: 48px; height: 48px; }
   .dl-icons-group:last-child .icon-item img { width: 44px; height: 72px; }
 
-  .dl-series { gap: 24px; }
+  /* Series logos: Places Worldwide on its own row, then a 2×2 grid */
+  .dl-series {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 40px 24px;
+    overflow: visible;
+  }
+
+  .dl-series-left,
+  .dl-series-right { display: contents; }
+
+  .dl-series-center {
+    grid-column: 1 / -1;
+    order: -1;
+    padding: 0;
+  }
+
+  .series-logo { max-width: 100%; }
 
   #footer { padding: 48px 20px 40px; }
 
