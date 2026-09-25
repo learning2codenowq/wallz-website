@@ -1151,7 +1151,8 @@ a { color: inherit; text-decoration: none; }
   .dl-icons-group:first-child .dl-icons { grid-template-columns: repeat(3, 48px); }
   .dl-icons-group:last-child .dl-icons { flex-wrap: wrap; }
   .dl-icons-group:first-child .icon-item img { width: 48px; height: 48px; }
-  .dl-icons-group:last-child .icon-item img { width: 44px; height: 72px; }
+  /* Bigger intelligence icons; shrink to fit narrow phones so all six stay on one row */
+  .dl-icons-group:last-child .icon-item img { width: min(54px, calc((100vw - 45px) / 6)); height: auto; aspect-ratio: 54 / 88; }
 
   /* Series logos: Places Worldwide on its own row, then a 2×2 grid */
   .dl-series {
