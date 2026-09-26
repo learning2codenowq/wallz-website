@@ -102,7 +102,7 @@
   var currentStep = 1;
   var isDubai = false;
 
-  var SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby2HzZXsxXx2Qy_NaOGE6gI7z2X6nxt2oj0-6YpzXriIQO8nwLmE354wDJNgzdSWbkr5A/exec';
 
   function getStepOrder() {
     isDubai = (answers['q5'] === 'Dubai');
