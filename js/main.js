@@ -318,6 +318,9 @@ document.addEventListener('click', function (e) {
 
     fetch(SCRIPT_URL, { method: 'POST', body: data })
       .then(function () {
+        /* Count the application as a lead in Google Analytics (if loaded) */
+        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_name: 'project_application' });
+
         document.getElementById('wf-steps').style.display = 'none';
         document.getElementById('wf-fill').style.display = 'none';
         document.getElementById('wf-prog-label').style.display = 'none';
