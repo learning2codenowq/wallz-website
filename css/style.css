@@ -11,19 +11,15 @@
   --nav-h: 52px;
 }
 
-/* Dark mode: the design is identical in light and dark. We declare support
-   for both so browsers don't apply their own automatic darkening (Samsung
-   Internet ignores "only light" but skips sites that handle dark mode).
-   Every colour on the page is set explicitly, and the white sections pin
-   their form controls to light so they never pick up dark browser defaults. */
-:root { color-scheme: light dark; }
+/* Opt out of automatic dark mode (Chrome respects this). */
+:root { color-scheme: only light; }
 
-@media (prefers-color-scheme: dark) {
-  html, body { background: var(--black); color: var(--white); }
-}
-
-#tagline,
-#apply { color-scheme: light; }
+/* Samsung Internet ignores the opt-out and recolours the page itself. On real
+   Samsung devices, white icons made with filter: brightness(0) invert(1)
+   disappeared, while ones made with invert(1) brightness(2) stayed visible.
+   So every white icon/logo here uses a BLACK source file + invert(1)
+   brightness(2) (identical result in other browsers). Don't use
+   brightness(0) invert(1) for new icons. */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -41,7 +37,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .dl-icons-row img {
-  filter: brightness(0) invert(1);
+  filter: invert(1) brightness(2);
 }
 
 /* ══════════════════════════════════════
@@ -64,7 +60,7 @@ a { color: inherit; text-decoration: none; }
 .nav-logo img {
   height: 60px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: invert(1) brightness(2);
 }
 
 /* ══════════════════════════════════════
@@ -843,8 +839,8 @@ a { color: inherit; text-decoration: none; }
 
 .series-logo-art { height: auto; }
 
-/* Logos ship dark; the Design Language one has its own white version */
-.series-logo-art:not(.series-logo-art--dl) { filter: brightness(0) invert(1); }
+/* Logos ship black; turn them white (see the Samsung note at the top) */
+.series-logo-art { filter: invert(1) brightness(2); }
 
 .series-logo-art--dl       { left: 79.95%;  top: 15.585%; width: 15.317%; }
 .series-logo-art--natures  { left: 2.483%;  top: 84.563%; width: 14.85%; }
