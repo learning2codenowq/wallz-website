@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- The design sets its own colours; stop browsers (e.g. Samsung Internet,
-       Chrome "darken websites") from auto-inverting it in dark mode -->
-  <meta name="color-scheme" content="only light" />
+  <!-- Declares dark-mode support so browsers don't auto-darken the page.
+       Samsung Internet ignores "only light" but leaves sites that handle dark
+       mode alone; the design looks identical in both modes. See style.css. -->
+  <meta name="color-scheme" content="light dark" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9WF4QE4M69"></script>
@@ -47,7 +48,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
 </head>
 <body>
 
