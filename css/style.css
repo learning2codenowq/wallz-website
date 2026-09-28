@@ -11,6 +11,17 @@
   --nav-h: 52px;
 }
 
+/* Opt out of browsers' automatic dark mode (Samsung Internet, Chrome
+   "darken websites"). The site already defines every colour itself. */
+:root { color-scheme: only light; }
+
+/* Samsung Internet only skips its forced dark mode on pages that handle dark
+   mode themselves, which it detects from this media query. The site looks
+   the same either way, so this just re-states light-only. */
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: only light; }
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
